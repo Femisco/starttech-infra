@@ -37,10 +37,10 @@ resource "aws_s3_bucket_policy" "frontend_policy" {
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{
-      Effect = "Allow"
+      Effect    = "Allow"
       Principal = "*"
-      Action = ["s3:GetObject"]
-      Resource = "${aws_s3_bucket.frontend.arn}/*"
+      Action    = ["s3:GetObject"]
+      Resource  = "${aws_s3_bucket.frontend.arn}/*"
     }]
   })
 }
@@ -62,8 +62,8 @@ resource "aws_cloudfront_distribution" "frontend_cdn" {
     target_origin_id       = "s3-frontend"
     viewer_protocol_policy = "redirect-to-https"
 
-    allowed_methods  = ["GET", "HEAD"]
-    cached_methods   = ["GET", "HEAD"]
+    allowed_methods = ["GET", "HEAD"]
+    cached_methods  = ["GET", "HEAD"]
 
     forwarded_values {
       query_string = false

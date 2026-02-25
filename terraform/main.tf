@@ -1,3 +1,12 @@
+terraform {
+  backend "s3" {
+    bucket         = "starttech-terraform-state-ahmed-2026" # use your exact bucket name
+    key            = "global/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-locks"
+    encrypt        = true
+  }
+}
 provider "aws" {
   region = "us-east-1"
 }
